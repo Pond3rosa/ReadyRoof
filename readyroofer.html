@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready Roofing AZ - Professional Roofing Services</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN for easy icon integration -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light blue-gray background */
+            color: #334155; /* Dark slate gray text */
+        }
+        /* Custom styles for sections for better visual separation */
+        section {
+            padding: 4rem 0; /* Vertical padding for sections */
+        }
+        /* Style for the header image placeholder */
+        .header-image-placeholder {
+            background-color: #e2e8f0; /* Lighter gray background */
+            color: #64748b; /* Gray text */
+            min-height: 400px;
+            display: flex;
+            flex-direction: column; /* Allow content and button to stack */
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-align: center;
+            position: relative; /* For image overlay */
+        }
+        .header-image-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the container */
+            z-index: 0; /* Behind text/button */
+        }
+        .header-image-content {
+            position: relative; /* Above image */
+            z-index: 1;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            border-radius: 0.5rem;
+            color: white;
+            max-width: 80%; /* Limit width of text content */
+        }
+        /* Styles for professional looking icons (e.g. checkmarks or roof icons) */
+        .icon-color {
+            color: #fbbf24; /* Amber-500 color for icons */
+        }
+        /* Custom styling for FAQ accordion */
+        .faq-question {
+            cursor: pointer;
+            padding: 1.5rem;
+            background-color: #e2e8f0;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .faq-question:hover {
+            background-color: #cbd5e1;
+        }
+        .faq-answer {
+            max-height: 0; /* Default collapsed state */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background-color: #f0f4f8;
+            border-radius: 0.5rem;
+            margin-top: -0.5rem; /* Overlap slightly for seamless look */
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .faq-answer.open {
+            padding-top: 1rem;
+            padding-bottom: 1.5rem;
+        }
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+        .faq-question.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive header adjustments to keep title on one line and prevent clipping */
+        .header-title {
+            white-space: nowrap; /* Keep on one line */
+            line-height: 1.2; /* Ensure sufficient vertical space for descenders */
+            padding-bottom: 0.2em; /* Add a little extra padding at the bottom */
+            /* Removed overflow: hidden and text-overflow: ellipsis to prevent clipping */
+        }
+        @media (max-width: 639px) { /* Adjust for mobile if title is too big */
+            .header-title {
+                font-size: 2.5rem; /* Smaller font for very small screens */
+            }
+            .header-nav ul {
+                justify-content: center; /* Center nav items on small screens */
+            }
+            .header-nav li {
+                margin: 0 0.5rem; /* Reduce margin on small screens */
+            }
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .header-title {
+                font-size: 3rem; /* Slightly smaller for one line */
+                margin-bottom: 0;
+            }
+            .header-nav {
+                margin-top: 0;
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .header-title {
+                font-size: 3.5rem; /* Larger on desktop but still one line */
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-gray-900 text-white py-4 shadow-lg rounded-b-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center header-content">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-2 sm:mb-0 header-title">Ready Roofing AZ</h1>
+            <nav class="header-nav">
+                <ul class="flex flex-wrap justify-center sm:space-x-4 lg:space-x-6 text-base sm:text-lg">
+                    <li><a href="#services" class="hover:text-amber-400 transition duration-300 px-2 py-1">Services</a></li>
+                    <li><a href="#why-choose-us" class="hover:text-amber-400 transition duration-300 px-2 py-1">Why Choose Us</a></li>
+                    <li><a href="#faq" class="hover:text-amber-400 transition duration-300 px-2 py-1">FAQ</a></li>
+                    <li><a href="#contact" class="hover:text-amber-400 transition duration-300 px-2 py-1">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Landscape Image Placeholder and Call to Action -->
+    <div class="header-image-placeholder rounded-lg mx-auto mt-8 w-11/12 md:w-5/6 lg:w-4/5 shadow-md overflow-hidden">
+        <img src="https://placehold.co/1200x400/e2e8f0/64748b?text=roof1" alt="roof1" class="w-full h-auto object-cover rounded-lg">
+        <div class="header-image-content flex flex-col items-center">
+            <p class="p-4 text-2xl sm:text-3xl font-bold mb-6">Your Trusted Partner for Superior Roofing Solutions in Arizona</p>
+            <a href="#contact" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full text-lg sm:text-xl transition duration-300 ease-in-out shadow-lg transform hover:scale-105">
+                Get Your Free Estimate Today!
+            </a>
+        </div>
+    </div>
+
+    <!-- About Us Section with Square Image Placeholder -->
+    <section id="about" class="bg-white rounded-lg shadow-md mx-auto mt-8 w-11/12 md:w-5/6 lg:w-4/5 p-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center md:items-start gap-8">
+            <div class="md:w-1/3 flex-shrink-0">
+                <img src="https://placehold.co/400x400/e2e8f0/64748b?text=roof2" alt="roof2" class="w-full h-auto object-cover rounded-lg shadow-md">
+            </div>
+            <div class="md:w-2/3 text-lg leading-relaxed">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center md:text-left mb-8 text-gray-800">About Ready Roofing AZ</h2>
+                <p class="mb-4">
+                    Ready Roofing AZ is a veteran-owned and operated company in Cave Creek, AZ, dedicated to providing superior roofing solutions. We bring integrity, discipline, and a strong work ethic to every project, ensuring exceptional craftsmanship and client satisfaction.
+                </p>
+                <p>
+                    Our expertise covers a wide range of roofing needs, from repairs to replacements, all designed to withstand Arizona's climate. We prioritize clear communication, transparent processes, and efficient project completion for a hassle-free experience. Your peace of mind is our priority, and we build lasting relationships based on trust and excellent results.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-gray-100 rounded-lg shadow-md mx-auto mt-8 w-11/12 md:w-5/6 lg:w-4/5 p-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800">Our Comprehensive Roofing Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Roofing Services List -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">Expert Solutions for Every Roof</h3>
+                    <p class="text-lg leading-relaxed mb-4">
+                        At Ready Roofing AZ, we offer a full spectrum of professional roofing services for your property. Our skilled team handles all roofing challenges with the latest tools and techniques, providing tailored solutions for your needs and budget.
+                    </p>
+                    <ul class="list-disc list-inside text-lg leading-relaxed space-y-2 pl-4">
+                        <li><strong>Thorough Roof Inspections & Assessments:</strong> Detailed evaluations to identify issues and provide proactive solutions.</li>
+                        <li><strong>Prompt & Reliable Roof Repair:</strong> Efficient repairs for all types of roofing damage, preventing further deterioration.</li>
+                    </ul>
+                </div>
+                <!-- Commitment Content (Expanded) -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">Our Unwavering Commitment to Quality</h3>
+                    <p class="text-lg leading-relaxed">
+                        Our dedication to excellence means flawless execution and adherence to the highest industry standards. We use premium-grade materials for robust, resilient roofs built to withstand Arizona's climate. We ensure transparent communication, keeping you informed from start to finish. Our polite, professional team minimizes disruption and leaves your property spotless. We build trust and lasting relationships through exceptional results.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process Section -->
+    <section id="our-process" class="bg-white rounded-lg shadow-md mx-auto mt-8 w-11/12 md:w-5/6 lg:w-4/5 p-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800">Our Seamless Roofing Process</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                <div class="p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="text-5xl icon-color mb-4 flex justify-center"><i data-lucide="search"></i></div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-700">Initial Consultation & Inspection</h3>
+                    <p class="text-gray-600">
+                        We begin with a thorough assessment of your roofing needs, conducting a detailed inspection to understand the scope of the project and identify any underlying issues.
+                    </p>
+                </div>
+                <!-- Removed "Detailed Proposal & Planning" as requested -->
+                <div class="p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="text-5xl icon-color mb-4 flex justify-center"><i data-lucide="hammer"></i></div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-700">Expert Installation & Execution</h3>
+                    <p class="text-gray-600">
+                        Our skilled team efficiently executes the project with precision and care, adhering to safety standards and minimizing disruption to your property.
+                    </p>
+                </div>
+                <div class="p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="text-5xl icon-color mb-4 flex justify-center"><i data-lucide="check-circle"></i></div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-700">Thorough Cleanup & Final Inspection</h3>
+                    <p class="text-gray-600">
+                        Upon completion, we conduct a meticulous cleanup and a final inspection to ensure every detail meets our high standards and your complete satisfaction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose-us" class="bg-gray-100 rounded-lg shadow-md mx-auto mt-8 w-11/12 md:w-5/6 lg:w-4/5 p-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800">Why Choose Ready Roofing AZ?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="flex flex-col items-center text-center p-4 rounded-xl shadow-sm border border-gray-200 bg-white">
+                    <div class="text-5xl icon-color mb-4 flex justify-center"><i data-lucide="award"></i></div> <!-- Icon instead of emoji -->
+                    <h3 class="text-xl font-semibold mb-2 text-gray-700">Veteran-Owned Excellence</h3>
+                    <p class="text-gray-600">
+                        Built on principles of integrity, discipline, and unwavering dedication, our veteran-owned company brings a level of professionalism and precision unmatched in the industry, ensuring reliable and high-quality service.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center text-center p-4 rounded-xl shadow-sm border border-gray-200 bg-white">
+                    <div class="text-5xl icon-color mb-4 flex justify-center"><i data-lucide="hard-hat"></i></div> <!-- Icon instead of emoji -->
+                    <h3 class="text-xl font-semibold mb-2 text-gray-700">Superior Craftsmanship</h3>
+                    <p class="text-gray-600">
+                        Our skilled installers use only the highest quality materials and proven techniques to ensure a durable, long-lasting, and beautiful roof for your property. We stand by the quality of our work.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center text-center p-4 rounded-xl shadow-sm border border-gray-200 bg-white">
+                    <div class="text-5xl icon-color mb-4 flex justify-center"><i data-lucide="messages-square"></i></div> <!-- Icon instead of emoji -->
+                    <h3 class="text-xl font-semibold mb-2 text-gray-700">Transparent Communication</h3>
+                    <p class="text-gray-600">
+                        We believe in open and honest communication throughout every step of your roofing project, keeping you informed and confident in our process from consultation to completion.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center text-center p-4 rounded-xl shadow-sm border border-gray-200 bg-white">
+                    <div class="text-5xl icon-color mb-4 flex justify-center"><i data-lucide="clock"></i></div> <!-- Icon instead of emoji -->
+                    <h3 class="text-xl font-semibold mb-2 text-gray-700">Efficient & Timely Completion</h3>
+                    <p class="text-gray-600">
+                        Our teams work efficiently and meticulously to complete projects quickly and with minimal disruption, respecting your time and property while delivering exceptional results.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center text-center p-4 rounded-xl shadow-sm border border-gray-200 bg-white">
+                    <div class="text-5xl icon-color mb-4 flex justify-center"><i data-lucide="thumbs-up"></i></div> <!-- Icon instead of emoji -->
+                    <h3 class="text-xl font-semibold mb-2 text-gray-700">Customer Satisfaction Guaranteed</h3>
+                    <p class="text-gray-600">
+                        Your satisfaction is our primary goal. We go above and beyond to ensure you are delighted with your new or repaired roof, offering post-service support and peace of mind.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center text-center p-4 rounded-xl shadow-sm border border-gray-200 bg-white">
+                    <div class="text-5xl icon-color mb-4 flex justify-center"><i data-lucide="dollar-sign"></i></div> <!-- Icon instead of emoji -->
+                    <h3 class="text-xl font-semibold mb-2 text-gray-700">Competitive Pricing</h3>
+                    <p class="text-gray-600">
+                        We offer competitive and fair pricing for our high-quality roofing services, providing excellent value without compromising on the superior materials and workmanship you deserve.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commitment to Excellence Section -->
+    <section id="commitment-to-excellence" class="bg-white rounded-lg shadow-md mx-auto mt-8 w-11/12 md:w-5/6 lg:w-4/5 p-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800">Our Commitment to Excellence</h2>
+            <div class="text-lg leading-relaxed">
+                <p class="mb-4">
+                    At Ready Roofing AZ, excellence is not just a goal; it's our standard. We are deeply committed to delivering unparalleled quality in every aspect of our work, from the initial consultation to the final cleanup. Our team operates with the precision and discipline instilled by our veteran leadership, ensuring that every project is executed flawlessly.
+                </p>
+                <p class="mb-4">
+                    We prioritize safety on every job site, adhering to strict protocols to protect our crew, your property, and everyone involved. Our commitment to efficiency means we complete projects with remarkable speed, without ever compromising on quality. As Rick Ruiz's testimonial highlights, our team is "out in less than six hours" with a "meticulous cleanup" – "couldn't even find a nail on the floor." This attention to detail and cleanliness is a hallmark of our service.
+                </p>
+                <p>
+                    Furthermore, we believe in fostering a polite and respectful environment. Our team members, as Tabitha Zapata noted, are "prompt and polite," and Matt Winkleman appreciated our communication throughout the process. This dedication to professional conduct, combined with our technical expertise and commitment to swift, clean execution, truly sets Ready Roofing AZ apart. We don't just build roofs; we build trust and lasting relationships.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials Section -->
+    <section id="testimonials" class="bg-gray-100 rounded-lg shadow-md mx-auto mt-8 w-11/12 md:w-5/6 lg:w-4/5 p-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800">What Our Valued Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1: Rick Ruiz -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <span class="text-amber-500 text-2xl mr-2"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span> <!-- 5 stars -->
+                        <span class="font-semibold text-gray-700">Rick Ruiz</span>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Ready Roofing, a veteran owned company, they were there at 5:15 like they said, and they were out in less than six hours one house one car garage completed. What can I say? Wow, just keep saying to myself. Wow amazing I couldn’t even find a nail on the floor the whole team was amazing. Very kind and polite. I like to thank, Steve and his team for an amazing job."
+                    </p>
+                    <p class="text-sm text-gray-500 text-right">- 2 years ago</p>
+                </div>
+
+                <!-- Testimonial 2: Matt Winkleman -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <span class="text-amber-500 text-2xl mr-2"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span> <!-- 5 stars -->
+                        <span class="font-semibold text-gray-700">Matt Winkleman</span>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Steve and his team of installers do a great job, offer competitive pricing, and communicate throughout the process. If you are considering a company to work with on replacing your roof, I would highly recommend Ready Roofing."
+                    </p>
+                    <p class="text-sm text-gray-500 text-right">- 2 years ago</p>
+                </div>
+
+                <!-- Testimonial 3: Tabitha Zapata -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <span class="text-amber-500 text-2xl mr-2"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></span> <!-- 5 stars -->
+                        <span class="font-semibold text-gray-700">Tabitha Zapata</span>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Had a wonderful experience with Steve and Ready Roofing. We have such a beautiful roof! His team was prompt and polite. It was a very quick turnaround- faster than other companies timeframes. Loved chatting with Steve!"
+                    </p>
+                    <p class="text-sm text-gray-500 text-right">- 2 years ago</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="bg-white rounded-lg shadow-md mx-auto mt-8 w-11/12 md:w-5/6 lg:w-4/5 p-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800">Frequently Asked Questions</h2>
+            <p class="text-lg leading-relaxed text-center mb-8 max-w-3xl mx-auto">
+                Have questions about your roofing project? We've compiled a list of common inquiries and their answers to help you better understand our services and the roofing process. If you don't find what you're looking for, feel free to contact us directly!
+            </p>
+            <div class="space-y-4 max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-xl font-semibold text-gray-700">What are the signs that my roof might need repair or replacement?</h3>
+                        <span class="faq-arrow text-2xl"><i data-lucide="chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-700">
+                            Common signs include missing or broken shingles, granules in your gutters, visible leaks or water stains on your ceiling, sagging sections of the roof, and unusually high energy bills. If you notice any of these, it's wise to get a professional inspection.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-xl font-semibold text-gray-700">How long does a typical roof replacement take?</h3>
+                        <span class="faq-arrow text-2xl"><i data-lucide="chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-700">
+                            The duration of a roof replacement depends on several factors, including the size and complexity of your roof, the materials chosen, and weather conditions. However, our efficient team at Ready Roofing AZ is known for quick turnarounds. As one of our testimonials highlights, a house with a one-car garage was completed in less than six hours. We strive to complete most residential projects within 1-3 days, ensuring minimal disruption to your daily routine.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-xl font-semibold text-gray-700">Do you offer free estimates and consultations?</h3>
+                        <span class="faq-arrow text-2xl"><i data-lucide="chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-700">
+                            Yes, Ready Roofing AZ provides free, no-obligation consultations and detailed estimates. We believe in transparent pricing and will provide a comprehensive breakdown of all costs involved after a thorough inspection of your roofing needs. We'll walk you through every step of the process.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-xl font-semibold text-gray-700">What kind of roofing materials do you work with?</h3>
+                        <span class="faq-arrow text-2xl"><i data-lucide="chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-700">
+                            We work with a variety of high-quality roofing materials to suit different aesthetic preferences and functional requirements. Our expertise includes, but is not limited to, asphalt shingles, tile roofs (such as concrete and clay), and various flat roofing systems (like TPO or modified bitumen). We'll help you choose the best material for your specific needs and the demanding Arizona climate.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Removed FAQ Item 5: Are you licensed and insured? -->
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-xl font-semibold text-gray-700">What is the lifespan of a new roof?</h3>
+                        <span class="faq-arrow text-2xl"><i data-lucide="chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-700">
+                            The lifespan of a new roof varies significantly based on the material. Asphalt shingles typically last 20-30 years, while tile roofs can last 50 years or more. Proper installation and regular maintenance, provided by companies like Ready Roofing AZ, can significantly extend the life of any roofing system.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-xl font-semibold text-gray-700">Do you offer warranties on your roofing services?</h3>
+                        <span class="faq-arrow text-2xl"><i data-lucide="chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-700">
+                            In a real-world scenario, Ready Roofing AZ would stand behind its work with comprehensive warranties covering both materials and labor. Specific warranty details would be provided during your consultation, ensuring you understand the long-term protection for your investment.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3 class="text-xl font-semibold text-gray-700">How do I schedule a service or get an estimate?</h3>
+                        <span class="faq-arrow text-2xl"><i data-lucide="chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-700">
+                            Scheduling a service or getting a free estimate with Ready Roofing AZ is easy! Simply give us a call at <a href="tel:6027513114" class="text-amber-600 hover:underline">602-751-3114</a> during our business hours (Monday-Friday, 8 AM – 6 PM). Our friendly team will assist you in setting up a convenient time for a consultation or service appointment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="bg-gray-900 text-white rounded-lg shadow-md mx-auto mt-8 w-11/12 md:w-5/6 lg:w-4/5 p-8 mb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8">Get Your Free Estimate Today!</h2>
+            <p class="text-lg text-center mb-8 max-w-2xl mx-auto">
+                Ready to enhance your home with a reliable and beautiful roof? Contact Ready Roofing AZ for a complimentary consultation and a detailed, no-obligation estimate. Our team is here to answer your questions and provide the expert roofing solutions you deserve.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <!-- Address & Phone -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-2xl font-semibold mb-4">Reach Out To Us</h3>
+                    <p class="text-lg mb-2"><strong>Ready Roofing AZ Headquarters</strong></p>
+                    <p class="text-lg mb-2">29455 N Cave Creek Rd suite 118-447</p>
+                    <p class="text-lg mb-4">Cave Creek, AZ 85331</p>
+                    <p class="text-lg"><strong>Phone:</strong> <a href="tel:6027513114" class="text-amber-400 hover:underline text-2xl">602-751-3114</a></p>
+                    <p class="text-lg mt-4">We look forward to hearing from you!</p>
+                </div>
+                <!-- Business Hours -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-2xl font-semibold mb-4">Our Business Hours</h3>
+                    <ul class="text-lg space-y-2">
+                        <li><strong>Monday:</strong> 8:00 AM – 6:00 PM</li>
+                        <li><strong>Tuesday:</strong> 8:00 AM – 6:00 PM</li>
+                        <li><strong>Wednesday:</strong> 8:00 AM – 6:00 PM</li>
+                        <li><strong>Thursday:</strong> 8:00 AM – 6:00 PM</li>
+                        <li><strong>Friday:</strong> 8:00 AM – 6:00 PM</li>
+                        <li><strong>Saturday:</strong> Closed</li>
+                        <li><strong>Sunday:</strong> Closed</li>
+                    </ul>
+                    <p class="text-lg mt-4">Appointments available during operating hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4 rounded-t-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            &copy; 2023 Ready Roofing AZ. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for the interactive FAQ section
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                // Toggle the 'open' class on the question to rotate the arrow
+                question.classList.toggle('open');
+
+                if (question.classList.contains('open')) {
+                    // Set max-height to a very large value to ensure all content is visible
+                    // This will allow scrollHeight to be accurate and prevent clipping
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+
+                    // After the transition, set max-height to 'none' to allow natural height adjustments
+                    // This is crucial for responsive layouts where content height might change
+                    answer.addEventListener('transitionend', function handler() {
+                        if (question.classList.contains('open')) { // Only set to 'none' if still open
+                            answer.style.maxHeight = 'none';
+                        }
+                        answer.removeEventListener('transitionend', handler);
+                    });
+
+                } else {
+                    // When closing, first set max-height to its current computed height
+                    // This ensures a smooth transition back to 0
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    // Force a reflow to ensure the browser registers the height before transitioning
+                    void answer.offsetWidth;
+                    // Then transition to 0
+                    answer.style.maxHeight = '0px';
+                }
+            });
+        });
+
+        // Initialize Lucide icons after the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+
+</body>
+</html>
